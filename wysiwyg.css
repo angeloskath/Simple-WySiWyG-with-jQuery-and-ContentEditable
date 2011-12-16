@@ -1,0 +1,27 @@
+.editor {
+font-family: sans-serif;
+line-height: 120%;
+font-size: 90%;
+}
+.editor b {
+font-weight: bold;
+}
+.editor i {
+font-style: italic;
+}
+.editor u {
+text-decoration: underline;
+}
+.editor ul {
+list-style-type: disc;
+padding-left: 25px;
+padding-top: 5px;
+}
+.editor ol {
+list-style-type: decimal;
+padding-left: 30px;
+padding-top: 5px;
+}
+.editor p {
+margin-bottom: 4px;
+}

@@ -1,0 +1,129 @@
+
+<html>
+
+<head>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+<script type="text/javascript" src="wysiwyg.js" ></script>
+<link rel="stylesheet" href="wysiwyg.css" />
+
+<style type="text/css">
+body {
+	background: #b1ca35;
+	font-family: sans-serif;
+	color: #6c6320;
+}
+#container {
+	background: #f8f5c7;
+	width: 800px;
+	margin: 0 auto;
+	padding: 25px;
+}
+h1 {
+	color: #f8f5c7;
+	font-weight: normal;
+	font-size: 130%;
+	width: 800px;
+	margin: 0 auto;
+	padding: 25px;
+}
+h3 {
+	margin: 10px 0px 10px 0px;
+}
+#loadcontent {
+	display: block;
+	padding: 8px 20px 8px 20px;
+	font-size: 100%;
+	margin-top: 20px;
+	margin-left: 400px;
+}
+#sampletext {
+	width: 500px;
+	height: 200px;
+}
+#toolbar {
+	background: #6c6320;
+	display: block;
+	width: 498px; /* textarea.width + editor.border*2 - toolbar.img.margin*2 */
+}
+#editor_sampletext {
+	background: white;
+	border: 1px solid #6c6320; 
+}
+#toolbar img {
+	margin: 3px;
+}
+#toolbar img:hover {
+	border: 1px solid #f8f5c7;
+	margin: 2px;
+}
+</style>
+
+<script type="text/javascript">
+var wysiwyg;
+jQuery(document).ready(function () {
+	wysiwyg = new WySiWyG('#sampletext','#examplecontent');
+	wysiwyg.setToolbar('#toolbar');
+	wysiwyg.change(onchange);
+	jQuery('#loadcontent').click(load);
+});
+
+var saving = false;
+// We can have on change for GDocs like auto saving
+function onchange() {
+	if (saving) return;
+	saving = true;
+	jQuery('#changeevent').fadeIn('fast').delay(1000).fadeOut();
+	setTimeout(function () {
+		jQuery('#changeevent_true').fadeIn('fast').delay(4000).fadeOut();
+		setTimeout(function () {
+				saving = false;
+			},4000);
+		},1000);
+	
+	
+}
+
+function load() {
+	jQuery('#examplecontent').html(wysiwyg.getHTML());
+}
+</script>
+
+</head>
+
+<body>
+
+	<h1>What You See Is What You Get - Example page</h1>
+	<div id="container">
+		<div style="width: 550px; float: left;">
+			<h3>Example form</h3>
+			<div id="toolbar">
+				<img rel="Bold" title="Bold" />
+				<img rel="Italic" title="Italic" />
+				<img rel="Underline" title="Underline" />
+				<img rel="justifyLeft" title="Left align" />
+				<img rel="justifyCenter" title="Center align" />
+				<img rel="justifyRight" title="Right align" />
+				<img rel="insertUL" title="Bullet List" />
+				<img rel="insertOL" title="Numbered List" />
+			</div>
+			<textarea id="sampletext" ></textarea>
+			<span id="loadcontainer"><input type="button" value="Load" id="loadcontent" /></span>
+		</div>
+		<div style="width: 200px; float: right;">
+			<h3>Listening for changes</h3>
+			<div id="changeevent" style="display: none;">Your changes have been saved</div>
+			<div id="changeevent_true" style="display: none;">Nah, not really but they could have since a change event has fired!</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="content">
+			<h3>Loaded content</h3>
+			<div id="examplecontent">
+			Hello world!<div><i>italic <b>bolditalic <u>and underlined</u></b></i></div><div><i><b><u><br></u></b></i></div><div>Unordered list</div><div><ul><li>Yep here is an unordered list item</li><li>And here is a bit of lipsum:&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet ipsum dui, et auctor est. Vivamus faucibus libero eget elit ornare ullamcorper. Sed dignissim tristique egestas.</li></ul><div>Ordered list</div></div><div><ol><li>One</li><li>Two</li><li>Three</li></ol></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
