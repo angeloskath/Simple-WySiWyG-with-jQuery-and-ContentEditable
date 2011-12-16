@@ -3,9 +3,9 @@
 It is an attempt for a functional and still lightweight WYSIWYG editor. It uses [contenteditable](http://www.google.gr/search?aq=0&oq=contente&sourceid=chrome&ie=UTF-8&q=contenteditable "contenteditable") and jQuery.
 
 _**Features**_
-* One call transform a textarea into a richeditor
-* Vertically resize the editor (ruthlessly stolen (the idea) from Drupal)
-* Change event for asynchronous autosave (and anything you can imagine)
++	One call transform a textarea into a richeditor
++	Vertically resize the editor (ruthlessly stolen (the idea) from Drupal)
++	Change event for asynchronous autosave (and anything you can imagine)
 
 It has been tested (**not thoroughly**) with **IE 8,9 , FF 3.5, Chrome 16** .
 
